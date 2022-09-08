@@ -1,6 +1,9 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import { DummyProducts_ApiUrl } from '../../helpers/config';
 import './ProductPage.scss';
+
+// console.log(DummyProducts_ApiUrl);
 
 const ProductPage = () => {
   return (
