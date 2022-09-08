@@ -55,12 +55,12 @@ const HomePage = () => {
   console.log(state);
 
   return (
-    <Container>
+    <Container className="py-5">
       <Row>
         <Col md={2}>
           <Button onClick={fetchContentHandler}>Fetch Content</Button>
         </Col>
-        <Col md={10}>
+        <Col md={10} className="fixed-height-300">
           {state.isLoading ? (
             <p>Please wait while content has been loaded...</p>
           ) : state.error ? (
