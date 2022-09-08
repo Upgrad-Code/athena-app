@@ -39,7 +39,6 @@ const HomePage = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         dispatch({
           type: Actions_Type.Fetch_Success,
           payload: data,
@@ -58,8 +57,22 @@ const HomePage = () => {
   return (
     <Container>
       <Row>
-        <Col>
+        <Col md={2}>
           <Button onClick={fetchContentHandler}>Fetch Content</Button>
+        </Col>
+        <Col md={10}>
+          {state.isLoading ? (
+            <p>Please wait while content has been loaded...</p>
+          ) : state.error ? (
+            <p>{state.error}</p>
+          ) : (
+            <Row>
+              {state.data &&
+                state.data.map((el) => {
+                  return <Col md={3}> {el.name.common} </Col>;
+                })}
+            </Row>
+          )}
         </Col>
       </Row>
     </Container>
