@@ -27,6 +27,11 @@ const NavBar = (args) => {
                 Home
               </Link>
             </NavItem>
+            <NavItem>
+              <Link to="/products" className="nav-link">
+                Products
+              </Link>
+            </NavItem>
           </Nav>
           <NavbarText>Simple Text</NavbarText>
         </Collapse>
