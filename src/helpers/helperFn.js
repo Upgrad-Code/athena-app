@@ -2,8 +2,9 @@ import { TimeOut_Sec } from './config';
 
 const timeOut = (s) => {
   return new Promise((_, reject) => {
-    return setTimeout(() =>
-      reject(`Request is taking too long. More than ${s} seconds.`)
+    return setTimeout(
+      () => reject(`Request is taking too long. More than ${s} seconds.`),
+      s * 1000
     );
   });
 };

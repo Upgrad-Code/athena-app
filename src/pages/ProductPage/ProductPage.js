@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { DummyProducts_ApiUrl } from '../../helpers/config';
+import { getJson } from '../../helpers/helperFn';
+import {
+  iState,
+  ACTIONS_TYPE,
+  ProductPageReducer,
+} from '../../reducer/ProductPageReducer';
 import './ProductPage.scss';
 
-// console.log(DummyProducts_ApiUrl);
-
 const ProductPage = () => {
+  const [state, dispatch] = useReducer(ProductPageReducer, iState);
+
+  useEffect(() => {
+    dispatch({
+      type: ACTIONS_TYPE.FETCH_START,
+    });
+    (async () => {
+      try {
+        const data = await getJson(DummyProducts_ApiUrl);
+        console.log(data.products);
+      } catch (err) {}
+    })();
+  }, []);
+  console.log(state);
   return (
     <Container>
       <Row>

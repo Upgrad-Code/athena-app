@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -22,7 +23,7 @@ const NavBar = (args) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
-            <NavItem>
+            {/* <NavItem>
               <Link to="/" className="nav-link">
                 Home
               </Link>
@@ -31,7 +32,7 @@ const NavBar = (args) => {
               <Link to="/products" className="nav-link">
                 Products
               </Link>
-            </NavItem>
+            </NavItem> */}
           </Nav>
           <NavbarText>Simple Text</NavbarText>
         </Collapse>
