@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useContext } from 'react';
 import {
   Container,
   Row,
@@ -12,15 +12,15 @@ import {
 } from 'reactstrap';
 import { DummyProducts_ApiUrl } from '../../helpers/config';
 import { getJson } from '../../helpers/helperFn';
-import {
-  iState,
-  ACTIONS_TYPE,
-  ProductPageReducer,
-} from '../../reducer/ProductPageReducer';
+import { ProductPageContext } from '../../context/ProductPageContext';
+
+import { ACTIONS_TYPE } from '../../reducer/ProductPageReducer';
 import './ProductPage.scss';
 
 const ProductPage = () => {
-  const [state, dispatch] = useReducer(ProductPageReducer, iState);
+  const { state, dispatch } = useContext(ProductPageContext);
+  console.log(state);
+  // const [state, dispatch] = useReducer(ProductPageReducer, iState);
 
   useEffect(() => {
     dispatch({
@@ -42,7 +42,7 @@ const ProductPage = () => {
     })();
   }, []);
 
-  console.log(state);
+  // console.log(state);
 
   return (
     <section className="product-page">
@@ -76,9 +76,10 @@ const ProductPage = () => {
                               >
                                 ${el.price}
                               </CardSubtitle>
-                              <Button>Button</Button>
+                              <Button>Add to cart</Button>
+                              <Button color="danger">Remove from cart</Button>
                             </CardBody>
-                          </Card>{' '}
+                          </Card>
                         </Col>
                       );
                     })}

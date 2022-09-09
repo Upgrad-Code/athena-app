@@ -1,6 +1,7 @@
 export const iState = {
   isLoading: false,
   products: [],
+  cart: [],
   error: null,
 };
 

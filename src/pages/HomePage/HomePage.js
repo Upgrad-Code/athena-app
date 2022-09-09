@@ -52,7 +52,7 @@ const HomePage = () => {
       });
   };
 
-  console.log(state);
+  // console.log(state);
 
   return (
     <Container className="py-5">

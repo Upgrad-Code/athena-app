@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -8,37 +6,51 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
   NavbarText,
 } from 'reactstrap';
 
-const NavBar = (args) => {
+function NavBar(args) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      <Navbar {...args} expand="md" color="dark" dark>
+      <Navbar {...args}>
         <NavbarBrand href="/">reactstrap</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
-            {/* <NavItem>
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
+            <NavItem>
+              <NavLink href="/components/">Components</NavLink>
             </NavItem>
             <NavItem>
-              <Link to="/products" className="nav-link">
-                Products
-              </Link>
-            </NavItem> */}
+              <NavLink href="https://github.com/reactstrap/reactstrap">
+                GitHub
+              </NavLink>
+            </NavItem>
+            {/* <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Options
+              </DropdownToggle>
+              <DropdownMenu end>
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>Reset</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown> */}
           </Nav>
           <NavbarText>Simple Text</NavbarText>
         </Collapse>
       </Navbar>
     </div>
   );
-};
+}
 
 export default NavBar;
