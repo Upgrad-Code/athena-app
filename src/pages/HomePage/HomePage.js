@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import './HomePage.scss';
 
 const iState = {

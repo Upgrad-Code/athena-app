@@ -9,7 +9,7 @@ import {
   CardSubtitle,
   CardText,
   Button,
-} from 'reactstrap';
+} from 'react-bootstrap';
 import { DummyProducts_ApiUrl } from '../../helpers/config';
 import { getJson } from '../../helpers/helperFn';
 import { ProductPageContext } from '../../context/ProductPageContext';
