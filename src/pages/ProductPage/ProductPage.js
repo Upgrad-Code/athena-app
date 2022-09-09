@@ -1,5 +1,15 @@
 import React, { useReducer, useEffect } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardText,
+  Button,
+} from 'reactstrap';
 import { DummyProducts_ApiUrl } from '../../helpers/config';
 import { getJson } from '../../helpers/helperFn';
 import {
@@ -19,19 +29,66 @@ const ProductPage = () => {
     (async () => {
       try {
         const data = await getJson(DummyProducts_ApiUrl);
-        console.log(data.products);
-      } catch (err) {}
+        dispatch({
+          type: ACTIONS_TYPE.FETCH_SUCCESS,
+          payload: data.products,
+        });
+      } catch (err) {
+        dispatch({
+          type: ACTIONS_TYPE.FETCH_ERROR,
+          payload: err,
+        });
+      }
     })();
   }, []);
+
   console.log(state);
+
   return (
-    <Container>
-      <Row>
-        <Col md={2}>
-          <p>Product page..</p>
-        </Col>
-      </Row>
-    </Container>
+    <section className="product-page">
+      <Container>
+        <Row>
+          <Col md={2}>
+            <p>Products</p>
+          </Col>
+          <Col md={10}>
+            <Row>
+              {state.isLoading ? (
+                <p>Please wait while content has been loaded...</p>
+              ) : state.error ? (
+                <p>{state.error}</p>
+              ) : (
+                <Row>
+                  {state.products &&
+                    state.products.map((el) => {
+                      return (
+                        <Col md={4} key={el.id} className="mb-3">
+                          <Card>
+                            {/* <img alt="Sample" src={el.thumbnail} /> */}
+                            <CardBody>
+                              {/* <CardTitle tag="h5">{el.title}</CardTitle> */}
+                              <CardSubtitle className="mb-2" tag="h6">
+                                {el.title}
+                              </CardSubtitle>
+                              <CardSubtitle
+                                className="mb-2 text-muted"
+                                tag="h6"
+                              >
+                                ${el.price}
+                              </CardSubtitle>
+                              <Button>Button</Button>
+                            </CardBody>
+                          </Card>{' '}
+                        </Col>
+                      );
+                    })}
+                </Row>
+              )}
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+    </section>
   );
 };
 

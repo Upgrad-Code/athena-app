@@ -15,14 +15,19 @@ export const ProductPageReducer = (state, action) => {
     case ACTIONS_TYPE.FETCH_START:
       return {
         ...state,
+        isLoading: true,
       };
     case ACTIONS_TYPE.FETCH_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        products: action.payload,
       };
     case ACTIONS_TYPE.FETCH_ERROR:
       return {
         ...state,
+        isLoading: false,
+        error: action.payload,
       };
     default:
       return {
